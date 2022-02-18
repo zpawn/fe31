@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Crypto from './Crypto';
-import Counter from './Counter';
-import Clock from './Clock';
+import Crypto from './components/Crypto/Crypto';
+import Counter from './components/Counter';
+import Clock from './components/Clock';
 
 class App extends Component {
     constructor(props) {
@@ -15,17 +15,15 @@ class App extends Component {
 
     componentDidMount() {
         setTimeout(() => {
-            this.setState({showClock: false})
+            this.setState({ showClock: false })
         }, 3000)
     }
 
     render() {
         return (
             <>
-                <Clock/>
-                <hr/>
+                {this.state.showClock && <Clock/>}
                 <Counter/>
-                <hr/>
                 <Crypto/>
             </>
         )

@@ -15,16 +15,10 @@ class Counter extends Component {
         console.log('[onMinusCapture]')
     }
 
-    onPlus = (event) => {
+    onPlus = () => {
         this.setState((state) => {
             return { counter: state.counter + 1 }
-        })
-        this.setState((state) => {
-            return { counter: state.counter + 1 }
-        })
-        this.setState((state) => {
-            return { counter: state.counter + 1 }
-        })
+        });
     }
 
     onSubmit = (event) => {
@@ -43,9 +37,12 @@ class Counter extends Component {
                     <input type="text" value={this.state.title} onChange={this.onChange} />
                 </form>
                 <h1>{this.state.title}</h1>
-                <button onClick={this.onMinus} onClickCapture={this.onMinusCapture}>minus</button>
-                <h2>{this.state.counter}</h2>
-                <button onClick={this.onPlus}>plus</button>
+
+                <div className='input-group' style={{ width: '300px' }}>
+                    <button className='btn btn-outline-secondary' onClick={this.onMinus} onClickCapture={this.onMinusCapture}>Minus</button>
+                    <input type='text' className='form-control text-center' disabled value={this.state.counter} />
+                    <button className='btn btn-outline-secondary' onClick={this.onPlus}>Plus</button>
+                </div>
             </>
         )
     }
