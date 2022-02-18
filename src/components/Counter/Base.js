@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import Button from '../../ui/Button';
 
-class Counter extends Component {
+class Base extends Component {
     state = {
         title: 'Counter',
         counter: 0
@@ -8,7 +9,11 @@ class Counter extends Component {
 
     onMinus = () => {
         console.log('[onMinus]')
-        this.setState({ counter: this.state.counter - 1 })
+        const newStateFn = (currentState) => {
+            return { counter: currentState.counter - 1 }
+        };
+
+        this.setState(newStateFn)
     }
 
     onMinusCapture = () => {
@@ -39,13 +44,18 @@ class Counter extends Component {
                 <h1>{this.state.title}</h1>
 
                 <div className='input-group' style={{ width: '300px' }}>
-                    <button className='btn btn-outline-secondary' onClick={this.onMinus} onClickCapture={this.onMinusCapture}>Minus</button>
+                    <Button color='outline-secondary' onClick={this.onMinus} onClickCapture={this.onMinusCapture}>Minus</Button>
                     <input type='text' className='form-control text-center' disabled value={this.state.counter} />
-                    <button className='btn btn-outline-secondary' onClick={this.onPlus}>Plus</button>
+                    <Button
+                        className='someClass'
+                        color='outline-secondary'
+                        onClick={this.onPlus}
+                        disabled={true}
+                    >Plus</Button>
                 </div>
             </>
         )
     }
 }
 
-export default Counter;
+export default Base;

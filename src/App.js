@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import Crypto from './components/Crypto/Crypto';
-import Counter from './components/Counter';
+import Counter from './components/Counter/Base';
+import ForwardCounter from './components/Counter/ForwardCounter';
+import BackwardCounter from './components/Counter/BackwardCounter';
 import Clock from './components/Clock';
+import WelcomeGreeting from './components/Welcome';
 
 class App extends Component {
     constructor(props) {
@@ -9,22 +12,25 @@ class App extends Component {
 
         this.state = {
             name: 'React',
-            showClock: true,
+            isShow: true,
         }
     }
 
     componentDidMount() {
         setTimeout(() => {
-            this.setState({ showClock: false })
+            this.setState({ isShow: false })
         }, 3000)
     }
 
     render() {
         return (
             <>
-                {this.state.showClock && <Clock/>}
+                {/*{this.state.isShow && <Clock/>}*/}
                 <Counter/>
-                <Crypto/>
+                {/*<Crypto/>*/}
+                {/*{this.state.isShow && <WelcomeGreeting/>}*/}
+                <ForwardCounter/>
+                <BackwardCounter/>
             </>
         )
     }
